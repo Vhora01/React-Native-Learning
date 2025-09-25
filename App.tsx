@@ -4,42 +4,39 @@
  *
  * @format
  */
+import { NavigationContainer } from "@react-navigation/native";
+import StackNavigation from "./Components/StackNavigation";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+// import ProductDetail from "./Screens/Product/ProductDetail";
+// import DrawerNavigation from "./Components/DrawerNavigation";
+// import { useState } from "react";
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+  // const [isLogin, setIsLogin] = useState(false);
+  // const navigation = useNavigation()
+  // const siginInPress = () => {
+  //       console.log('sigin iiiinnsidsdf');
+  //       // setIsLogin(true);
+  //     navigation.navigate("ProductScreen");
+  //   }
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+
+
+    // <GestureHandlerRootView style={{ flex: 1 }}>
+    //  {
+       <NavigationContainer >
+        {
+          // isLogin ? 
+          <StackNavigation />
+          // :
+          //  <DrawerNavigation />
+        }
+      </NavigationContainer>
+    //  }
+    // </GestureHandlerRootView>
+
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
