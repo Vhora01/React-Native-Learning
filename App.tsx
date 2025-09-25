@@ -6,7 +6,7 @@
  */
 import { NavigationContainer } from "@react-navigation/native";
 import StackNavigation from "./Components/StackNavigation";
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+// import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 // import ProductDetail from "./Screens/Product/ProductDetail";
 // import DrawerNavigation from "./Components/DrawerNavigation";

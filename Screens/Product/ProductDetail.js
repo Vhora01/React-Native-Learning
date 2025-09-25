@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const ProductDetail = ({ route }) => {
     const [product, setProduct] = useState({});
     useEffect(() => {
-        navigation.setOptions({ headerShown: true, headerBackVisible: true, title: 'Products' });
+        navigation.setOptions({ headerShown: true, headerBackVisible: true, title: 'Products Details' });
         setProduct(route.params.product)
     }, [navigation, route]);
     const navigation = useNavigation()

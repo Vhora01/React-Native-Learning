@@ -16,7 +16,6 @@ const ProductScreen = () => {
     const [products, setProducts] = useState([{}]);
     const [error, setError] = useState('');
     const navigation = useNavigation()
-
     useEffect(() => {
         navigation.setOptions({ headerShown: true, headerBackVisible: false, title: 'Products' });
         APIManager(
