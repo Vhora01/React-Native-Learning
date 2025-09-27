@@ -24,7 +24,7 @@ const StackNavigation = () => {
     // console.log(isLogin);
 
     return (
-        <Stack.Navigator initialRouteName="SignIn" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="SignIn" screenOptions={{ headerShown:  !isLogin ? false : true }}>
             {/* <Stack.Screen name="SignIn" component={SignIn} initialParams={{ onClick: siginInPress }} />
             <Stack.Screen name="Registeration" component={Registeration} /> */}
             {/* <Stack.Screen name="HomeTab" component={HomeTab} /> */}
@@ -38,7 +38,7 @@ const StackNavigation = () => {
                         <Stack.Screen name="Registeration" component={Registeration} />
                     </> :
                     <>
-                        <Stack.Screen name="HomeTab" component={HomeTab} />
+                        <Stack.Screen name="HomeTab" component={HomeTab} options={{headerShown:false}}/>
                     </>
             }
         </Stack.Navigator>

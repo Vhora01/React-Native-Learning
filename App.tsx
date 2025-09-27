@@ -6,6 +6,8 @@
  */
 import { NavigationContainer } from "@react-navigation/native";
 import StackNavigation from "./Components/StackNavigation";
+import { Provider } from "react-redux";
+import { store } from "./Redux/Store";
 // import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 // import ProductDetail from "./Screens/Product/ProductDetail";
@@ -21,21 +23,13 @@ function App() {
   //     navigation.navigate("ProductScreen");
   //   }
   return (
-
-
-    // <GestureHandlerRootView style={{ flex: 1 }}>
-    //  {
-       <NavigationContainer >
+    <Provider store={store}>
+      <NavigationContainer >
         {
-          // isLogin ? 
           <StackNavigation />
-          // :
-          //  <DrawerNavigation />
         }
       </NavigationContainer>
-    //  }
-    // </GestureHandlerRootView>
-
+    </Provider>
   );
 }
 

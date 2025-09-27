@@ -3,6 +3,7 @@ import {  FlatList, StyleSheet, View } from "react-native";
 import { APIManager } from '../../Utilities/APIManager';
 import { useNavigation } from "@react-navigation/native";
 import ProductCell from "../../Components/ProductCell";
+import ActivityLoader from "../../Components/ActivityLoader";
 // import ProductDetail from "./ProductDetail";
 
 // const { width } = Dimensions.get('window');
@@ -15,17 +16,21 @@ const numColumns = 2;
 const ProductScreen = () => {
     const [products, setProducts] = useState([{}]);
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigation = useNavigation()
     useEffect(() => {
         navigation.setOptions({ headerShown: true, headerBackVisible: false, title: 'Products' });
+        setLoading(true);
         APIManager(
             {
                 url: 'https://fakestoreapi.com/products',
                 onSuccess: (result) => {
                     setProducts(result)
+                    setLoading(false);
                 },
                 onError: (err) => {
                     setError(err);
+                    setLoading(false);
                 }
             }
         );
@@ -34,7 +39,8 @@ const ProductScreen = () => {
     
     return (
         <View style={styles.container}>
-            <FlatList
+            {
+                !loading ? <FlatList
                 data={products}
                 keyExtractor={(product) => product.id}
                 numColumns={numColumns}
@@ -43,7 +49,9 @@ const ProductScreen = () => {
                 }/>}
                 columnWrapperStyle={styles.columnWrapper}
                 showsVerticalScrollIndicator={false}
-            />
+            />:
+            <ActivityLoader color={"green"} size={'large'}/>
+            }
         </View>
     );
 }
